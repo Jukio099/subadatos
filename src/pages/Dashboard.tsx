@@ -33,11 +33,22 @@ const Dashboard = () => {
           <p className="text-gray-600">Accede a todos nuestros datos y análisis</p>
         </div>
 
-        <Tabs defaultValue="founder" className="w-full">
+        <Tabs defaultValue="dashboard" className="w-full">
           <TabsList className="grid w-full md:w-[400px] grid-cols-2 mx-auto mb-8">
-            <TabsTrigger value="founder">Nuestro Fundador</TabsTrigger>
             <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+            <TabsTrigger value="founder">Nuestro Fundador</TabsTrigger>
           </TabsList>
+          
+          <TabsContent value="dashboard" className="border rounded-lg bg-white shadow-md">
+            <div className="h-[calc(100vh-300px)] min-h-[500px]">
+              <iframe 
+                src="https://dashboard-oficial.onrender.com" 
+                className="w-full h-full border-0"
+                title="Dashboard Integrado"
+                sandbox="allow-scripts allow-same-origin allow-forms"
+              ></iframe>
+            </div>
+          </TabsContent>
           
           <TabsContent value="founder" className="border rounded-lg bg-white shadow-md p-6">
             <div className="flex flex-col md:flex-row items-center gap-8">
@@ -109,17 +120,6 @@ const Dashboard = () => {
                   </a>
                 </div>
               </div>
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="dashboard" className="border rounded-lg bg-white shadow-md">
-            <div className="h-[calc(100vh-300px)] min-h-[500px]">
-              <iframe 
-                src="https://dashboard-oficial.onrender.com" 
-                className="w-full h-full border-0"
-                title="Dashboard Integrado"
-                sandbox="allow-scripts allow-same-origin allow-forms"
-              ></iframe>
             </div>
           </TabsContent>
         </Tabs>
