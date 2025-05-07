@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,6 +20,9 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
+    // If it's a route instead of a section, don't try to scroll
+    if (id === 'dashboard') return;
+    
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -70,6 +74,12 @@ const Navbar = () => {
           >
             Beneficios
           </button>
+          <Link 
+            to="/dashboard" 
+            className="text-foreground hover:text-nature-600 transition-colors"
+          >
+            Dashboard
+          </Link>
           <Button
             variant="default" 
             className="bg-nature-600 hover:bg-nature-700 text-white"
@@ -120,6 +130,13 @@ const Navbar = () => {
             >
               Beneficios
             </button>
+            <Link 
+              to="/dashboard"
+              className="text-foreground hover:text-nature-600 transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
             <Button
               variant="default"
               className="bg-nature-600 hover:bg-nature-700 text-white w-full"
