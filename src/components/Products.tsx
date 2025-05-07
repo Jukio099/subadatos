@@ -1,9 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Phone, Database, Leaf, Scale, ChartLine } from 'lucide-react';
+import { ArrowRight, Phone, ChartLine, Leaf, Scale } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Card } from '@/components/ui/card';
 
 const productsData = [
   {
@@ -12,7 +11,7 @@ const productsData = [
     price: "$100.000/hora",
     description: "Servicios de análisis de datos para aumentar la eficiencia y rentabilidad de su empresa.",
     image: "/lovable-uploads/fb7b2fb0-41bf-4e3e-a48e-494045052acd.png",
-    features: ["Visualización de datos", "Informes personalizados", "Toma de decisiones basada en datos"],
+    features: ["Toma de decisiones basada en datos", "Visualización de datos", "Informes personalizados"],
     icon: <ChartLine className="h-8 w-8 text-nature-600" />
   },
   {
@@ -30,7 +29,7 @@ const productsData = [
     price: "$21.200/kg",
     description: "Semilla incrustada ideal para zonas con precipitaciones moderadas. Excelente para el ganado.",
     image: "/lovable-uploads/afb51770-ae33-4bc9-b163-4a4950946883.png",
-    features: ["Alta resistencia", "Incrustada para mayor germinación", "Ideal para ganado bovino"],
+    features: ["Incrustada para mayor germinación", "Ideal para ganado bovino", "Alta resistencia"],
     icon: <Leaf className="h-8 w-8 text-nature-600" />
   },
   {
@@ -60,48 +59,46 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
-    <Card className="group overflow-hidden shadow-md hover:shadow-xl transition-shadow animate-on-scroll relative">
-      <div className="relative w-full h-full">
-        <AspectRatio ratio={16 / 9}>
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="w-full h-full object-cover"
-          />
-        </AspectRatio>
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 flex flex-col justify-end transition-opacity hover:opacity-100">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="font-bold text-xl text-white">{product.name}</h3>
-            <span className="bg-earth-100 text-earth-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
-              {product.price}
-            </span>
-          </div>
-          
-          <p className="text-white/90 mb-4">{product.description}</p>
-          
-          <ul className="space-y-2 mb-5">
-            {product.features.map((feature, index) => (
-              <li key={index} className="flex items-center gap-2 text-sm text-white/80">
-                <span className="w-2 h-2 rounded-full bg-nature-500 inline-block"></span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-          
-          <a 
-            href={getWhatsappLink(product)} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-full inline-block"
-          >
-            <Button variant="outline" className="w-full border-nature-600 text-white hover:bg-nature-600">
-              Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </a>
+    <div className="relative w-full overflow-hidden rounded-lg shadow-md group animate-on-scroll">
+      <AspectRatio ratio={21/9} className="w-full">
+        <img 
+          src={product.image} 
+          alt={product.name} 
+          className="w-full h-full object-cover"
+        />
+      </AspectRatio>
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 flex flex-col justify-end transition-opacity">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="font-bold text-xl text-white">{product.name}</h3>
+          <span className="bg-earth-100 text-earth-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
+            {product.price}
+          </span>
         </div>
+        
+        <p className="text-white/90 mb-3">{product.description}</p>
+        
+        <div className="grid grid-cols-1 gap-2 mb-4">
+          {product.features.map((feature, index) => (
+            <div key={index} className="flex items-center gap-2 text-sm text-white/80">
+              <span className="w-2 h-2 rounded-full bg-nature-500 flex-shrink-0"></span>
+              <span>{feature}</span>
+            </div>
+          ))}
+        </div>
+        
+        <a 
+          href={getWhatsappLink(product)} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="mt-auto"
+        >
+          <Button variant="outline" className="w-full border-nature-600 text-white hover:bg-nature-600">
+            Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </a>
       </div>
-    </Card>
+    </div>
   );
 };
 
@@ -119,7 +116,7 @@ const Products = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 mx-auto">
           {productsData.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
