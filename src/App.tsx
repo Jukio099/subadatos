@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import PaymentSuccess from "./pages/PaymentSuccess";
-import BoldSettings from "./pages/BoldSettings";
 import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
@@ -24,7 +23,6 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/pago-exitoso" element={<PaymentSuccess />} />
-            <Route path="/bold-settings" element={<BoldSettings />} />
             <Route path="/dashboard" element={<Dashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
