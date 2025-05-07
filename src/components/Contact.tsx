@@ -157,7 +157,8 @@ const Contact = () => {
       </div>
       
       {/* Add some custom styles to ensure the Google Calendar button looks good */}
-      <style jsx>{`
+      <style>
+        {`
         .google-calendar-button-container {
           display: inline-block;
         }
@@ -175,7 +176,8 @@ const Contact = () => {
           background-color: #2c864c !important;
           transform: translateY(-1px) !important;
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };
