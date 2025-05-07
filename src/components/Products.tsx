@@ -3,12 +3,13 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Phone, Database, Leaf, Scale, ChartLine } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Card } from '@/components/ui/card';
 
 const productsData = [
   {
     id: 1,
     name: "Análisis de Datos",
-    price: "Consultar precio",
+    price: "$100.000/hora",
     description: "Servicios de análisis de datos para aumentar la eficiencia y rentabilidad de su empresa.",
     image: "/lovable-uploads/fb7b2fb0-41bf-4e3e-a48e-494045052acd.png",
     features: ["Visualización de datos", "Informes personalizados", "Toma de decisiones basada en datos"],
@@ -47,7 +48,7 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
   let message = "";
   
   if (product.name === "Análisis de Datos") {
-    message = "Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+    message = "Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos%20a%20$100.000%20COP%20la%20hora.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
   } else if (product.name.includes("Brachiaria")) {
     message = "Hola,%20estoy%20interesado%2Fa%20en%20sus%20pastos.%20Específicamente%20en%20" + encodeURIComponent(product.name) + ".%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
   } else {
@@ -59,49 +60,53 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow animate-on-scroll">
-      <div className="relative w-full h-56 overflow-hidden">
+    <Card className="group overflow-hidden shadow-md hover:shadow-xl transition-shadow animate-on-scroll relative">
+      <div className="relative w-full h-full">
         <AspectRatio ratio={16 / 9}>
           <img 
             src={product.image} 
             alt={product.name} 
-            className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover"
           />
         </AspectRatio>
-      </div>
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-3">
-          <h3 className="font-bold text-xl text-nature-800">{product.name}</h3>
-          <span className="bg-earth-100 text-earth-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
-            {product.price}
-          </span>
+        
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 flex flex-col justify-end transition-opacity hover:opacity-100">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="font-bold text-xl text-white">{product.name}</h3>
+            <span className="bg-earth-100 text-earth-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
+              {product.price}
+            </span>
+          </div>
+          
+          <p className="text-white/90 mb-4">{product.description}</p>
+          
+          <ul className="space-y-2 mb-5">
+            {product.features.map((feature, index) => (
+              <li key={index} className="flex items-center gap-2 text-sm text-white/80">
+                <span className="w-2 h-2 rounded-full bg-nature-500 inline-block"></span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href={getWhatsappLink(product)} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full inline-block"
+          >
+            <Button variant="outline" className="w-full border-nature-600 text-white hover:bg-nature-600">
+              Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </a>
         </div>
-        <p className="text-gray-600 mb-4">{product.description}</p>
-        <ul className="space-y-2 mb-5">
-          {product.features.map((feature, index) => (
-            <li key={index} className="flex items-center gap-2 text-sm">
-              <span className="w-2 h-2 rounded-full bg-nature-500 inline-block"></span>
-              {feature}
-            </li>
-          ))}
-        </ul>
-        <a 
-          href={getWhatsappLink(product)} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="w-full inline-block"
-        >
-          <Button variant="outline" className="w-full border-nature-600 text-nature-700 hover:bg-nature-50">
-            Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </a>
       </div>
-    </div>
+    </Card>
   );
 };
 
 const Products = () => {
-  const dataServicesWhatsapp = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+  const dataServicesWhatsapp = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos%20a%20$100.000%20COP%20la%20hora.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
 
   return (
     <section id="productos" className="section-padding bg-gray-50">
