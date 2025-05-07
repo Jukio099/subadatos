@@ -23,7 +23,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/9569de5a-057e-4973-b16b-1def60885893.png" 
                 alt="SUBADATOS Logo" 
-                className="h-16 mr-3" 
+                className="h-16 w-16 mr-3 rounded-full object-cover" 
               />
             </div>
             <p className="text-gray-300 mb-6">

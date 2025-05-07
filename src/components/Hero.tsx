@@ -1,10 +1,10 @@
 
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Phone } from 'lucide-react';
+import { ChevronDown, Phone, Database } from 'lucide-react';
 
 const Hero = () => {
-  const whatsappLink = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+  const whatsappLink = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -51,12 +51,12 @@ const Hero = () => {
       
       <div className="container-custom relative z-10 pt-20">
         <div className="max-w-3xl animate-on-scroll visible">
-          <span className="inline-block bg-nature-500/90 text-white px-4 py-1 rounded-full text-sm font-medium mb-4">Servicios profesionales · Mejora tu negocio</span>
+          <span className="inline-block bg-nature-500/90 text-white px-4 py-1 rounded-full text-sm font-medium mb-4">Análisis de datos · Servicios de IA · Mejora tu negocio</span>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Potencia tu empresa en <span className="text-nature-400">Colombia</span>
+            Mejora tus ganancias con <span className="text-nature-400">análisis de datos</span>
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8">
-            Mejora la gestión de tus datos con SUBADATOS. Obtén más ganancias en tu empresa con nuestros servicios profesionales.
+            En SUBADATOS te ayudamos a mejorar la gestión y análisis de tus datos. Potencia tu empresa con nuestros servicios profesionales de análisis y soluciones de IA.
           </p>
           <div className="flex flex-wrap gap-4">
             <a 

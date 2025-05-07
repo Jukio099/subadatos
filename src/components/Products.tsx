@@ -1,16 +1,17 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight, Phone, Database, Leaf, Scale } from 'lucide-react';
 
 const productsData = [
   {
     id: 1,
-    name: "Brachiaria Decumbens",
-    price: "$21.200/kg",
-    description: "Semilla incrustada ideal para zonas con precipitaciones moderadas. Excelente para el ganado.",
-    image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    features: ["Alta resistencia", "Incrustada para mayor germinación", "Ideal para ganado bovino"]
+    name: "Análisis de Datos",
+    price: "Consultar precio",
+    description: "Servicios de análisis de datos para aumentar la eficiencia y rentabilidad de su empresa.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    features: ["Visualización de datos", "Informes personalizados", "Toma de decisiones basada en datos"],
+    icon: <Database className="h-8 w-8 text-nature-600" />
   },
   {
     id: 2,
@@ -18,19 +19,42 @@ const productsData = [
     price: "$89.000/kg",
     description: "Semilla incrustada para zonas húmedas. Resistente a la sequía y suelos pobres.",
     image: "https://images.unsplash.com/photo-1474557157379-8aa74a6ef541?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    features: ["Excelente para suelos pobres", "Resistente a sequías", "Alta producción de forraje"]
+    features: ["Excelente para suelos pobres", "Resistente a sequías", "Alta producción de forraje"],
+    icon: <Leaf className="h-8 w-8 text-nature-600" />
   },
   {
     id: 3,
+    name: "Brachiaria Decumbens",
+    price: "$21.200/kg",
+    description: "Semilla incrustada ideal para zonas con precipitaciones moderadas. Excelente para el ganado.",
+    image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    features: ["Alta resistencia", "Incrustada para mayor germinación", "Ideal para ganado bovino"],
+    icon: <Leaf className="h-8 w-8 text-nature-600" />
+  },
+  {
+    id: 4,
     name: "Básculas",
     price: "Consultar precio",
     description: "Básculas de precisión para el pesaje de ganado en su finca.",
     image: "/lovable-uploads/aea2a7de-ba3d-4483-91da-718db6980336.png",
-    features: ["Alta precisión", "Fácil instalación", "Servicio técnico"]
+    features: ["Alta precisión", "Fácil instalación", "Servicio técnico"],
+    icon: <Scale className="h-8 w-8 text-nature-600" />
   }
 ];
 
-const whatsappLink = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20pastos%20para%20Casanare.%20Específicamente%20en%3A%0A-%20Brachiaria%20Humidicola%20incrustada%20%28%2489.000%2Fkg%29%0A-%20Brachiaria%20Decumbens%20incrustada%20%28%2421.200%2Fkg%29%0A%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%20o%20c%C3%B3mo%20realizar%20un%20pedido%3F";
+const getWhatsappLink = (product: typeof productsData[0]) => {
+  let message = "";
+  
+  if (product.name === "Análisis de Datos") {
+    message = "Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+  } else if (product.name.includes("Brachiaria")) {
+    message = "Hola,%20estoy%20interesado%2Fa%20en%20sus%20pastos.%20Específicamente%20en%20" + encodeURIComponent(product.name) + ".%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+  } else {
+    message = "Hola,%20estoy%20interesado%2Fa%20en%20" + encodeURIComponent(product.name) + ".%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+  }
+  
+  return `https://wa.me/573026836254?text=${message}`;
+};
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
@@ -59,7 +83,7 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
           ))}
         </ul>
         <a 
-          href={whatsappLink} 
+          href={getWhatsappLink(product)} 
           target="_blank" 
           rel="noopener noreferrer"
           className="w-full inline-block"
@@ -74,18 +98,20 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
 };
 
 const Products = () => {
+  const dataServicesWhatsapp = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+
   return (
     <section id="productos" className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-          <h2 className="text-3xl font-bold mb-2 text-gradient">Nuestros Productos</h2>
+          <h2 className="text-3xl font-bold mb-2 text-gradient">Nuestros Servicios y Productos</h2>
           <div className="h-1 w-20 bg-nature-500 mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-600">
-            Ofrecemos las mejores variedades de semillas de pasto para Casanare, adaptadas específicamente a las condiciones climáticas y de suelo de la región, además de básculas de calidad para su finca.
+            Ofrecemos servicios avanzados de análisis de datos para empresas y también las mejores variedades de semillas de pasto para Colombia, adaptadas específicamente a las condiciones del terreno.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 mx-auto">
           {productsData.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -93,7 +119,7 @@ const Products = () => {
         
         <div className="mt-16 text-center animate-on-scroll">
           <a 
-            href={whatsappLink} 
+            href={dataServicesWhatsapp} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-block"
