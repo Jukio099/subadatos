@@ -1,6 +1,8 @@
 
 import React, { useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const Dashboard = () => {
   useEffect(() => {
@@ -28,13 +30,65 @@ const Dashboard = () => {
           <p className="text-gray-600">Accede a todos nuestros datos y análisis</p>
         </div>
 
-        <Tabs defaultValue="embedded" className="w-full">
+        <Tabs defaultValue="founder" className="w-full">
           <TabsList className="grid w-full md:w-[400px] grid-cols-2 mx-auto mb-8">
-            <TabsTrigger value="embedded">Panel Integrado</TabsTrigger>
-            <TabsTrigger value="external">Panel Externo</TabsTrigger>
+            <TabsTrigger value="founder">Nuestro Fundador</TabsTrigger>
+            <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="embedded" className="border rounded-lg bg-white shadow-md">
+          <TabsContent value="founder" className="border rounded-lg bg-white shadow-md p-6">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <Avatar className="h-48 w-48 border-4 border-nature-500">
+                  <AvatarImage 
+                    src="/lovable-uploads/8af72ab5-daeb-4500-92dc-a960ba32cb9f.png" 
+                    alt="Julio César Rodríguez" 
+                    className="object-cover"
+                  />
+                  <AvatarFallback className="text-4xl">JCR</AvatarFallback>
+                </Avatar>
+              </div>
+              
+              <div className="flex-grow text-center md:text-left">
+                <h2 className="text-2xl font-bold text-nature-700 mb-2">Julio César Rodríguez</h2>
+                <h3 className="text-lg font-semibold text-nature-600 mb-4">Fundador y Director Ejecutivo</h3>
+                
+                <div className="space-y-3">
+                  <p className="text-gray-700">
+                    Economista graduado de la Pontificia Universidad Javeriana con especialización en 
+                    Inteligencia Artificial aplicada al análisis de datos empresariales.
+                  </p>
+                  <p className="text-gray-700">
+                    Con más de 8 años de experiencia en análisis económico y estadístico, Julio César 
+                    ha liderado proyectos de transformación digital para importantes empresas 
+                    en Colombia y América Latina.
+                  </p>
+                  <p className="text-gray-700">
+                    Su visión de democratizar el acceso a herramientas avanzadas de análisis de datos 
+                    lo llevó a fundar SUBADATOS, combinando su conocimiento en economía con las 
+                    últimas tecnologías en IA.
+                  </p>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2 justify-center md:justify-start">
+                  <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                    Economía
+                  </span>
+                  <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                    Inteligencia Artificial
+                  </span>
+                  <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                    Análisis de Datos
+                  </span>
+                  <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                    Consultoría Empresarial
+                  </span>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="dashboard" className="border rounded-lg bg-white shadow-md">
             <div className="h-[calc(100vh-300px)] min-h-[500px]">
               <iframe 
                 src="https://dashboard-oficial.onrender.com" 
@@ -42,26 +96,6 @@ const Dashboard = () => {
                 title="Dashboard Integrado"
                 sandbox="allow-scripts allow-same-origin allow-forms"
               ></iframe>
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="external" className="text-center p-10">
-            <div className="max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold mb-4">Acceso directo al Dashboard</h3>
-              <p className="text-gray-600 mb-6">
-                Haz clic en el botón de abajo para abrir el dashboard en una nueva ventana para una mejor experiencia.
-              </p>
-              <a 
-                href="https://dashboard-oficial.onrender.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-nature-600 hover:bg-nature-700 text-white rounded-md font-medium transition-colors"
-              >
-                Abrir Dashboard Completo
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
             </div>
           </TabsContent>
         </Tabs>
