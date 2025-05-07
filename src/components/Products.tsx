@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Phone, ChartLine, Leaf, Scale } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Card } from '@/components/ui/card';
 
 const productsData = [
   {
@@ -59,45 +60,54 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
-    <div className="relative w-full overflow-hidden rounded-lg shadow-md group animate-on-scroll hover:shadow-xl transition-all duration-300">
-      <AspectRatio ratio={16/9} className="w-full">
-        <img 
-          src={product.image} 
-          alt={product.name} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </AspectRatio>
-      
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 flex flex-col justify-end transition-opacity">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-bold text-xl text-white">{product.name}</h3>
-          <span className="bg-earth-100 text-earth-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
-            {product.price}
-          </span>
-        </div>
-        
-        <p className="text-white/90 mb-3 line-clamp-2">{product.description}</p>
-        
-        <div className="grid grid-cols-1 gap-2 mb-4">
-          {product.features.map((feature, index) => (
-            <div key={index} className="flex items-center gap-2 text-sm text-white/80">
-              <span className="w-2 h-2 rounded-full bg-nature-500 flex-shrink-0"></span>
-              <span>{feature}</span>
+    <div className="group animate-on-scroll">
+      <Card className="overflow-hidden rounded-xl border-0 shadow-lg transition-all duration-300 hover:shadow-xl">
+        <div className="relative w-full">
+          <AspectRatio ratio={16/9} className="w-full">
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </AspectRatio>
+          
+          {/* Location badge - top right corner with diagonal design */}
+          <div className="absolute top-0 right-0">
+            <div className="bg-earth-500 text-white font-bold px-6 py-1 transform rotate-[0deg] translate-x-[15px] translate-y-[15px] shadow-md">
+              {product.price}
             </div>
-          ))}
+          </div>
+          
+          {/* Content overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 flex flex-col justify-end">
+            <h3 className="font-bold text-2xl text-white mb-2">{product.name}</h3>
+            
+            <p className="text-white/90 mb-4 line-clamp-2">{product.description}</p>
+            
+            <div className="grid grid-cols-1 gap-2 mb-6">
+              {product.features.map((feature, index) => (
+                <div key={index} className="flex items-center gap-2 text-sm text-white/80">
+                  <span className="w-2 h-2 rounded-full bg-nature-500 flex-shrink-0"></span>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+            
+            <a 
+              href={getWhatsappLink(product)} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button 
+                variant="outline" 
+                className="w-full border-nature-600 text-white hover:bg-nature-600 transition-colors duration-300 rounded-full"
+              >
+                Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
+          </div>
         </div>
-        
-        <a 
-          href={getWhatsappLink(product)} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="mt-auto"
-        >
-          <Button variant="outline" className="w-full border-nature-600 text-white hover:bg-nature-600 transition-colors duration-300">
-            Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </a>
-      </div>
+      </Card>
     </div>
   );
 };
@@ -130,7 +140,7 @@ const Products = () => {
             className="inline-block"
           >
             <Button 
-              className="bg-earth-600 hover:bg-earth-700 text-white py-6 px-8"
+              className="bg-earth-600 hover:bg-earth-700 text-white py-6 px-8 rounded-full"
             >
               <Phone className="mr-2 h-5 w-5" /> Consultar por WhatsApp
             </Button>
