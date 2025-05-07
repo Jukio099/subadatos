@@ -18,7 +18,7 @@ const productsData = [
     name: "Brachiaria Humidicola",
     price: "$89.000/kg",
     description: "Semilla incrustada para zonas húmedas. Resistente a la sequía y suelos pobres.",
-    image: "https://images.unsplash.com/photo-1474557157379-8aa74a6ef541?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    image: "/lovable-uploads/d1b7a494-e5ea-4b34-ad71-70849c067acd.png",
     features: ["Excelente para suelos pobres", "Resistente a sequías", "Alta producción de forraje"],
     icon: <Leaf className="h-8 w-8 text-nature-600" />
   },
@@ -27,7 +27,7 @@ const productsData = [
     name: "Brachiaria Decumbens",
     price: "$21.200/kg",
     description: "Semilla incrustada ideal para zonas con precipitaciones moderadas. Excelente para el ganado.",
-    image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    image: "/lovable-uploads/afb51770-ae33-4bc9-b163-4a4950946883.png",
     features: ["Alta resistencia", "Incrustada para mayor germinación", "Ideal para ganado bovino"],
     icon: <Leaf className="h-8 w-8 text-nature-600" />
   },
