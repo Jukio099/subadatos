@@ -59,16 +59,16 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
-    <div className="relative w-full overflow-hidden rounded-lg shadow-md group animate-on-scroll">
-      <AspectRatio ratio={21/9} className="w-full">
+    <div className="relative w-full overflow-hidden rounded-lg shadow-md group animate-on-scroll hover:shadow-xl transition-all duration-300">
+      <AspectRatio ratio={16/9} className="w-full">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </AspectRatio>
       
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 flex flex-col justify-end transition-opacity">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 flex flex-col justify-end transition-opacity">
         <div className="flex justify-between items-center mb-2">
           <h3 className="font-bold text-xl text-white">{product.name}</h3>
           <span className="bg-earth-100 text-earth-800 text-sm font-medium px-2.5 py-0.5 rounded-full">
@@ -76,7 +76,7 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
           </span>
         </div>
         
-        <p className="text-white/90 mb-3">{product.description}</p>
+        <p className="text-white/90 mb-3 line-clamp-2">{product.description}</p>
         
         <div className="grid grid-cols-1 gap-2 mb-4">
           {product.features.map((feature, index) => (
@@ -93,7 +93,7 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
           rel="noopener noreferrer"
           className="mt-auto"
         >
-          <Button variant="outline" className="w-full border-nature-600 text-white hover:bg-nature-600">
+          <Button variant="outline" className="w-full border-nature-600 text-white hover:bg-nature-600 transition-colors duration-300">
             Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </a>
