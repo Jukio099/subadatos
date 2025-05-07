@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { Phone, Mail, MapPin, ArrowRight, Facebook, Instagram, Twitter, Send } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const whatsappLink = "https://wa.me/573144423197?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20pastos%20para%20Casanare.%20Específicamente%20en%3A%0A-%20Brachiaria%20Humidicola%20incrustada%20%28%2489.000%2Fkg%29%0A-%20Brachiaria%20Decumbens%20incrustada%20%28%2421.200%2Fkg%29%0A%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%20o%20c%C3%B3mo%20realizar%20un%20pedido%3F";
   
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -96,9 +98,19 @@ const Footer = () => {
                   Colombia
                 </span>
               </li>
-              <li className="flex items-center">
-                <Phone className="h-5 w-5 mr-3 text-earth-400" />
-                <span className="text-gray-300">+57 312 456 7890</span>
+              <li className="flex items-start">
+                <Phone className="h-5 w-5 mr-3 text-earth-400 mt-1" />
+                <div>
+                  <span className="text-gray-300 block">+57 314 442 3197</span>
+                  <a 
+                    href={whatsappLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-earth-400 hover:text-earth-300 text-sm"
+                  >
+                    Contactar por WhatsApp
+                  </a>
+                </div>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-earth-400" />

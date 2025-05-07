@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
+  const whatsappLink = "https://wa.me/573144423197?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20pastos%20para%20Casanare.%20Específicamente%20en%3A%0A-%20Brachiaria%20Humidicola%20incrustada%20%28%2489.000%2Fkg%29%0A-%20Brachiaria%20Decumbens%20incrustada%20%28%2421.200%2Fkg%29%0A%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%20o%20c%C3%B3mo%20realizar%20un%20pedido%3F";
 
   const [formData, setFormData] = useState({
     name: '',
@@ -51,9 +53,19 @@ const Contact = () => {
           <h2 className="text-3xl font-bold mb-2 text-white">Contáctanos</h2>
           <div className="h-1 w-20 bg-earth-500 mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-200">
-            Estamos aquí para responder a sus preguntas y proporcionarle toda la información que necesite 
-            sobre nuestros productos y servicios.
+            Estamos aquí para asesorarte y ofrecerte las mejores semillas para tu terreno.
+            Respondemos rápidamente por WhatsApp o completando el formulario.
           </p>
+          <div className="mt-6">
+            <a 
+              href={whatsappLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-green-600 hover:bg-green-700 px-5 py-3 rounded-full text-white font-medium transition-colors"
+            >
+              <Phone className="mr-2 h-5 w-5" /> Contactar por WhatsApp
+            </a>
+          </div>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8 items-start">
@@ -115,7 +127,7 @@ const Contact = () => {
                   id="message"
                   name="message"
                   rows={5}
-                  placeholder="¿En qué podemos ayudarte?"
+                  placeholder="¿En qué podemos ayudarte? Indica qué tipo de semilla necesitas y cantidad aproximada."
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -158,8 +170,15 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold mb-1">Teléfono</h4>
                   <p className="text-gray-600">
-                    +57 312 456 7890<br />
-                    +57 8 635 7890
+                    +57 314 442 3197<br />
+                    <a 
+                      href={whatsappLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-earth-600 hover:underline"
+                    >
+                      Contactar por WhatsApp
+                    </a>
                   </p>
                 </div>
               </div>
