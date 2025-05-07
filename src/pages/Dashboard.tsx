@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -110,21 +109,18 @@ const Dashboard = () => {
                 
                 <div className="space-y-3">
                   <p className="text-gray-700 text-justify">
-                    Economista graduado con honores de la Pontificia Universidad Javeriana, especializado en 
-                    Inteligencia Artificial aplicada al análisis avanzado de datos empresariales. Su formación 
-                    combina sólidos fundamentos económicos con conocimientos técnicos de vanguardia.
+                    🎓 Economista graduado con honores de la Pontificia Universidad Javeriana, especializado en 
+                    <strong> Inteligencia Artificial</strong> aplicada al análisis de datos empresariales.
                   </p>
                   <p className="text-gray-700 text-justify">
-                    Reconocido como pionero en la implementación de tecnologías de análisis predictivo y machine learning, 
-                    ha desarrollado sistemas innovadores específicamente adaptados al sector ganadero y agroindustrial 
-                    en Colombia y América Latina. Su enfoque integra metodologías científicas con aplicaciones prácticas.
+                    🚀 Pionero en <strong>análisis predictivo</strong> y <strong>machine learning</strong>, 
+                    ha desarrollado sistemas innovadores para el sector 
+                    <strong> agroindustrial</strong> en Latinoamérica, integrando ciencia y aplicaciones prácticas.
                   </p>
                   <p className="text-gray-700 text-justify">
-                    Su visión estratégica de democratizar el acceso a herramientas avanzadas de análisis de datos 
-                    lo impulsó a fundar SUBADATOS, organización que ha transformado la toma de decisiones en el sector rural 
-                    mediante la aplicación de inteligencia artificial y análisis predictivo. Bajo su liderazgo, 
-                    la empresa ha establecido nuevos estándares de excelencia en la analítica de datos para el desarrollo 
-                    sostenible del sector agropecuario.
+                    💡 Fundador de <strong>SUBADATOS</strong>, ha transformado la toma de decisiones 
+                    en el sector rural mediante <strong>IA y análisis de datos</strong>, estableciendo 
+                    nuevos estándares para el desarrollo sostenible del agro.
                   </p>
                 </div>
 
