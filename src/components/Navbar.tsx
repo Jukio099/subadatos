@@ -37,7 +37,11 @@ const Navbar = () => {
     >
       <div className="container-custom flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <span className="text-xl md:text-2xl font-bold text-nature-800">Semillas<span className="text-earth-500">Pasto</span></span>
+          <img 
+            src="/lovable-uploads/9569de5a-057e-4973-b16b-1def60885893.png" 
+            alt="SUBADATOS Logo" 
+            className="h-12 mr-3" 
+          />
         </a>
 
         {/* Desktop Menu */}
@@ -65,12 +69,6 @@ const Navbar = () => {
             className="text-foreground hover:text-nature-600 transition-colors"
           >
             Beneficios
-          </button>
-          <button 
-            onClick={() => scrollToSection('testimonios')} 
-            className="text-foreground hover:text-nature-600 transition-colors"
-          >
-            Testimonios
           </button>
           <Button
             variant="default" 
@@ -121,12 +119,6 @@ const Navbar = () => {
               className="text-foreground hover:text-nature-600 transition-colors py-2"
             >
               Beneficios
-            </button>
-            <button 
-              onClick={() => scrollToSection('testimonios')}
-              className="text-foreground hover:text-nature-600 transition-colors py-2"
-            >
-              Testimonios
             </button>
             <Button
               variant="default"
