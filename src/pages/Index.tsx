@@ -7,6 +7,7 @@ import Products from '@/components/Products';
 import Benefits from '@/components/Benefits';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import DashboardButton from '@/components/DashboardButton';
 import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
@@ -41,6 +42,7 @@ const Index = () => {
       <Benefits />
       <Contact />
       <Footer />
+      <DashboardButton />
       <Toaster />
       
       {/* Back to top button */}

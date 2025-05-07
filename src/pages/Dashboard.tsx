@@ -5,7 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { Calendar } from 'lucide-react';
+import { Calendar, BarChart3, ArrowRight } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const Dashboard = () => {
   useEffect(() => {
@@ -33,6 +34,22 @@ const Dashboard = () => {
           <p className="text-gray-600">Accede a todos nuestros datos y análisis</p>
         </div>
 
+        {/* Welcome Banner */}
+        <div className="bg-gradient-to-r from-nature-600 to-nature-500 rounded-lg mb-8 p-6 text-white shadow-lg animate-fade-in">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="mb-4 md:mb-0">
+              <h2 className="text-xl font-bold">¡Bienvenido a tu Dashboard Interactivo!</h2>
+              <p className="mt-2 max-w-2xl">
+                Explora todos los datos en tiempo real y obtén información valiosa para tu negocio.
+                Nuestro panel interactivo te permite analizar tendencias y tomar decisiones basadas en datos.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <BarChart3 size={50} className="text-white/80" />
+            </div>
+          </div>
+        </div>
+
         <Tabs defaultValue="dashboard" className="w-full">
           <TabsList className="grid w-full md:w-[400px] grid-cols-2 mx-auto mb-8">
             <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
@@ -40,6 +57,19 @@ const Dashboard = () => {
           </TabsList>
           
           <TabsContent value="dashboard" className="border rounded-lg bg-white shadow-md">
+            {/* Dashboard Instructions */}
+            <div className="p-4 bg-gray-50 border-b">
+              <div className="flex items-center gap-2 mb-2">
+                <Badge variant="default" className="bg-nature-600">Nuevo</Badge>
+                <h3 className="font-medium">Cómo usar el dashboard:</h3>
+              </div>
+              <p className="text-sm text-gray-600">
+                Interactúa con los gráficos haciendo clic en las diferentes secciones. 
+                Puedes filtrar información usando los controles en la parte superior.
+                Para más detalles, pasa el cursor sobre los elementos visuales.
+              </p>
+            </div>
+            
             <div className="h-[calc(100vh-300px)] min-h-[500px]">
               <iframe 
                 src="https://dashboard-oficial.onrender.com" 

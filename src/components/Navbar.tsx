@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { Badge } from '@/components/ui/badge';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,9 +53,18 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <Link 
             to="/dashboard" 
-            className="text-foreground hover:text-nature-600 transition-colors"
+            className="relative flex items-center group"
           >
-            Dashboard
+            <div className="flex items-center text-foreground hover:text-nature-600 transition-colors">
+              <BarChart3 className="h-4 w-4 mr-1" />
+              <span>Dashboard</span>
+            </div>
+            <Badge 
+              variant="default" 
+              className="ml-1 bg-secondary text-white absolute -top-3 -right-8 animate-pulse"
+            >
+              Nuevo
+            </Badge>
           </Link>
           <button 
             onClick={() => scrollToSection('inicio')} 
@@ -108,10 +118,14 @@ const Navbar = () => {
           <div className="flex flex-col space-y-4">
             <Link 
               to="/dashboard"
-              className="text-foreground hover:text-nature-600 transition-colors py-2"
+              className="flex items-center justify-between text-foreground hover:text-nature-600 transition-colors py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Dashboard
+              <div className="flex items-center">
+                <BarChart3 className="h-4 w-4 mr-1" />
+                <span>Dashboard</span>
+              </div>
+              <Badge className="bg-secondary text-white">Nuevo</Badge>
             </Link>
             <button 
               onClick={() => scrollToSection('inicio')}
