@@ -1,9 +1,51 @@
 
-import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Phone, Mail, MapPin, Calendar } from 'lucide-react';
+
+declare global {
+  interface Window {
+    calendar?: {
+      schedulingButton: {
+        load: (config: {
+          url: string;
+          color: string;
+          label: string;
+          target: HTMLElement;
+        }) => void;
+      };
+    };
+  }
+}
 
 const Contact = () => {
   const whatsappLink = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+  const appointmentButtonRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Initialize Google Calendar button when component mounts
+    const loadCalendarButton = () => {
+      if (window.calendar && appointmentButtonRef.current) {
+        window.calendar.schedulingButton.load({
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1jukDDZEzrnmkKKAnSxB3Bn8iggOflE6zOEaj7FJ8bGhM2EBcj8XiPfO9xy3EEyIvELBJXORZZ?gv=true',
+          color: '#35a85d', // Using nature-600 color to match the site's theme
+          label: 'Reservar una cita',
+          target: appointmentButtonRef.current,
+        });
+      }
+    };
+
+    // Check if calendar is already available
+    if (window.calendar) {
+      loadCalendarButton();
+    } else {
+      // If not available yet, wait for window load
+      window.addEventListener('load', loadCalendarButton);
+    }
+
+    return () => {
+      window.removeEventListener('load', loadCalendarButton);
+    };
+  }, []);
 
   return (
     <section id="contacto" className="section-padding bg-white relative">
@@ -17,7 +59,7 @@ const Contact = () => {
             Estamos aquí para asesorarte y ofrecerte los mejores servicios para tu empresa.
             Respondemos rápidamente por WhatsApp.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href={whatsappLink} 
               target="_blank" 
@@ -26,6 +68,13 @@ const Contact = () => {
             >
               <Phone className="mr-2 h-5 w-5" /> Contactar por WhatsApp
             </a>
+            
+            {/* Google Calendar Appointment Button Container */}
+            <div 
+              ref={appointmentButtonRef} 
+              className="google-calendar-button-container"
+              aria-label="Botón para agendar una cita"
+            ></div>
           </div>
         </div>
         
@@ -76,6 +125,25 @@ const Contact = () => {
                 </p>
               </div>
             </div>
+
+            <div className="flex items-start">
+              <div className="bg-nature-100 p-3 rounded-full mr-4">
+                <Calendar className="h-5 w-5 text-nature-700" />
+              </div>
+              <div>
+                <h4 className="font-semibold mb-1">Agenda una consulta</h4>
+                <p className="text-gray-600 mb-2">
+                  Reserva una cita para una asesoría personalizada
+                </p>
+                {/* Calendar button container for the card */}
+                <div 
+                  className="google-calendar-card-button hidden md:block"
+                  aria-label="Botón para agendar una cita"
+                >
+                  <div ref={appointmentButtonRef} className="google-calendar-button-container"></div>
+                </div>
+              </div>
+            </div>
             
             <div className="pt-4">
               <h4 className="font-semibold mb-2">Horario de atención</h4>
@@ -87,6 +155,27 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      
+      {/* Add some custom styles to ensure the Google Calendar button looks good */}
+      <style jsx>{`
+        .google-calendar-button-container {
+          display: inline-block;
+        }
+        
+        /* Make sure the button matches our site theme */
+        :global(.appointment-button) {
+          background-color: #35a85d !important;
+          border-radius: 9999px !important;
+          padding: 0.75rem 1.25rem !important;
+          font-weight: 500 !important;
+          transition: all 0.2s ease-in-out !important;
+        }
+        
+        :global(.appointment-button:hover) {
+          background-color: #2c864c !important;
+          transform: translateY(-1px) !important;
+        }
+      `}</style>
     </section>
   );
 };
