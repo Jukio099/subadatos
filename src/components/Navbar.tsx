@@ -50,6 +50,12 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
+          <Link 
+            to="/dashboard" 
+            className="text-foreground hover:text-nature-600 transition-colors"
+          >
+            Dashboard
+          </Link>
           <button 
             onClick={() => scrollToSection('inicio')} 
             className="text-foreground hover:text-nature-600 transition-colors"
@@ -74,12 +80,6 @@ const Navbar = () => {
           >
             Beneficios
           </button>
-          <Link 
-            to="/dashboard" 
-            className="text-foreground hover:text-nature-600 transition-colors"
-          >
-            Dashboard
-          </Link>
           <Button
             variant="default" 
             className="bg-nature-600 hover:bg-nature-700 text-white"
@@ -106,6 +106,13 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg py-4 px-6 absolute top-full left-0 w-full animate-fade-in">
           <div className="flex flex-col space-y-4">
+            <Link 
+              to="/dashboard"
+              className="text-foreground hover:text-nature-600 transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
             <button 
               onClick={() => scrollToSection('inicio')}
               className="text-foreground hover:text-nature-600 transition-colors py-2"
@@ -130,13 +137,6 @@ const Navbar = () => {
             >
               Beneficios
             </button>
-            <Link 
-              to="/dashboard"
-              className="text-foreground hover:text-nature-600 transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Dashboard
-            </Link>
             <Button
               variant="default"
               className="bg-nature-600 hover:bg-nature-700 text-white w-full"
