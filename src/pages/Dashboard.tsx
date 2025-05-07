@@ -52,10 +52,10 @@ const Dashboard = () => {
           
           <TabsContent value="founder" className="border rounded-lg bg-white shadow-md p-6">
             <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 flex justify-center w-full md:w-auto">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Avatar className="h-48 w-48 border-4 border-nature-500 cursor-pointer hover:opacity-90 transition-opacity">
+                    <Avatar className="h-48 w-48 border-4 border-nature-500 cursor-pointer hover:opacity-90 transition-opacity mx-auto">
                       <AvatarImage 
                         src="/lovable-uploads/8af72ab5-daeb-4500-92dc-a960ba32cb9f.png" 
                         alt="Julio César Rodríguez" 
