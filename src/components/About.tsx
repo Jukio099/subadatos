@@ -24,9 +24,9 @@ const About = () => {
           <div className="animate-on-scroll">
             <h2 className="text-3xl font-bold mb-2 text-gradient">Quiénes Somos</h2>
             <div className="h-1 w-20 bg-nature-500 mb-6 rounded-full"></div>
-            <h3 className="text-2xl font-bold mb-6">La mejor opción en semillas de pasto en Yopal</h3>
+            <h3 className="text-2xl font-bold mb-6">La mejor opción en semillas de pasto en Casanare</h3>
             <p className="text-gray-700 mb-6">
-              Desde hace más de 15 años, en Semillas Pasto Yopal nos dedicamos a proporcionar a los ganaderos y agricultores de la región las mejores variedades de semillas de pasto, adaptadas específicamente a las condiciones del suelo y clima de Casanare.
+              Desde hace más de 15 años, en SUBADATOS nos dedicamos a proporcionar a los ganaderos y agricultores de la región las mejores variedades de semillas de pasto, adaptadas específicamente a las condiciones del suelo y clima de Casanare.
             </p>
             <p className="text-gray-700 mb-8">
               Nuestro compromiso es contribuir al desarrollo sostenible de la ganadería regional mediante productos de alta calidad y un servicio técnico especializado que garantice el éxito de su inversión.

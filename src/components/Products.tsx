@@ -6,23 +6,31 @@ import { ArrowRight, Phone } from 'lucide-react';
 const productsData = [
   {
     id: 1,
-    name: "Servicio de Datos",
-    price: "Consultar precio",
-    description: "Análisis avanzado de datos para optimizar procesos empresariales y toma de decisiones.",
-    image: "/lovable-uploads/aea2a7de-ba3d-4483-91da-718db6980336.png",
-    features: ["Análisis predictivo", "Dashboard personalizados", "Integración con sistemas"]
+    name: "Brachiaria Decumbens",
+    price: "$21.200/kg",
+    description: "Semilla incrustada ideal para zonas con precipitaciones moderadas. Excelente para el ganado.",
+    image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    features: ["Alta resistencia", "Incrustada para mayor germinación", "Ideal para ganado bovino"]
   },
   {
     id: 2,
-    name: "Consultorías",
+    name: "Brachiaria Humidicola",
+    price: "$89.000/kg",
+    description: "Semilla incrustada para zonas húmedas. Resistente a la sequía y suelos pobres.",
+    image: "https://images.unsplash.com/photo-1474557157379-8aa74a6ef541?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    features: ["Excelente para suelos pobres", "Resistente a sequías", "Alta producción de forraje"]
+  },
+  {
+    id: 3,
+    name: "Básculas",
     price: "Consultar precio",
-    description: "Asesoría especializada para implementar soluciones tecnológicas en su empresa.",
-    image: "https://images.unsplash.com/photo-1530176612918-a34156dc9071?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    features: ["Evaluación de procesos", "Implementación de sistemas", "Capacitación de personal"]
+    description: "Básculas de precisión para el pesaje de ganado en su finca.",
+    image: "/lovable-uploads/aea2a7de-ba3d-4483-91da-718db6980336.png",
+    features: ["Alta precisión", "Fácil instalación", "Servicio técnico"]
   }
 ];
 
-const whatsappLink = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+const whatsappLink = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20pastos%20para%20Casanare.%20Específicamente%20en%3A%0A-%20Brachiaria%20Humidicola%20incrustada%20%28%2489.000%2Fkg%29%0A-%20Brachiaria%20Decumbens%20incrustada%20%28%2421.200%2Fkg%29%0A%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%20o%20c%C3%B3mo%20realizar%20un%20pedido%3F";
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
@@ -70,14 +78,14 @@ const Products = () => {
     <section id="productos" className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-          <h2 className="text-3xl font-bold mb-2 text-gradient">Nuestros Servicios</h2>
+          <h2 className="text-3xl font-bold mb-2 text-gradient">Nuestros Productos</h2>
           <div className="h-1 w-20 bg-nature-500 mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-600">
-            Ofrecemos servicios de análisis de datos y consultoría empresarial para optimizar sus procesos y aumentar su rentabilidad. Contamos con asesores especializados para maximizar su inversión.
+            Ofrecemos las mejores variedades de semillas de pasto para Casanare, adaptadas específicamente a las condiciones climáticas y de suelo de la región, además de básculas de calidad para su finca.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 mx-auto max-w-4xl">
+        <div className="grid md:grid-cols-3 gap-8 mx-auto max-w-6xl">
           {productsData.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
