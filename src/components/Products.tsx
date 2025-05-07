@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Phone, Database, Leaf, Scale } from 'lucide-react';
+import { ArrowRight, Phone, Database, Leaf, Scale, ChartLine } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const productsData = [
   {
@@ -9,9 +10,9 @@ const productsData = [
     name: "Análisis de Datos",
     price: "Consultar precio",
     description: "Servicios de análisis de datos para aumentar la eficiencia y rentabilidad de su empresa.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    image: "/lovable-uploads/fb7b2fb0-41bf-4e3e-a48e-494045052acd.png",
     features: ["Visualización de datos", "Informes personalizados", "Toma de decisiones basada en datos"],
-    icon: <Database className="h-8 w-8 text-nature-600" />
+    icon: <ChartLine className="h-8 w-8 text-nature-600" />
   },
   {
     id: 2,
@@ -59,12 +60,14 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow animate-on-scroll">
-      <div className="h-56 overflow-hidden">
-        <img 
-          src={product.image} 
-          alt={product.name} 
-          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-        />
+      <div className="relative w-full h-56 overflow-hidden">
+        <AspectRatio ratio={16 / 9}>
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+          />
+        </AspectRatio>
       </div>
       <div className="p-6">
         <div className="flex justify-between items-center mb-3">
