@@ -15,7 +15,7 @@ const About = () => {
                 className="w-full rounded-lg shadow-xl"
               />
               <div className="absolute -bottom-6 -right-6 bg-nature-50 p-5 rounded-lg shadow-lg border-l-4 border-nature-500 hidden md:block">
-                <p className="font-bold text-xl">15+ años</p>
+                <p className="font-bold text-xl">2+ años</p>
                 <p className="text-gray-600">de experiencia</p>
               </div>
             </div>
@@ -26,7 +26,7 @@ const About = () => {
             <div className="h-1 w-20 bg-nature-500 mb-6 rounded-full"></div>
             <h3 className="text-2xl font-bold mb-6">La mejor opción en análisis de datos en Colombia</h3>
             <p className="text-gray-700 mb-6">
-              Desde hace más de 15 años, en SUBADATOS nos dedicamos a proporcionar a las empresas e industrias soluciones avanzadas para el análisis y gestión de datos, adaptadas específicamente a las necesidades de cada sector en Colombia.
+              Desde hace más de 2 años, en SUBADATOS nos dedicamos a proporcionar a las empresas e industrias soluciones avanzadas para el análisis y gestión de datos, adaptadas específicamente a las necesidades de cada sector en Colombia.
             </p>
             <p className="text-gray-700 mb-8">
               Nuestro compromiso es contribuir al desarrollo sostenible de los negocios mediante servicios de alta calidad y un servicio técnico especializado que garantice el éxito de su empresa.
