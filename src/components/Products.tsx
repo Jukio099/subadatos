@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Phone, ChartLine, Leaf, Scale } from 'lucide-react';
+import { ArrowRight, Phone, ChartLine, Leaf, Scale, Tag } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const productsData = [
   {
@@ -60,49 +61,63 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   return (
-    <div className="group animate-on-scroll">
-      <Card className="overflow-hidden rounded-xl border-0 shadow-lg transition-all duration-300 hover:shadow-xl">
-        <div className="relative w-full">
-          <AspectRatio ratio={16/9} className="w-full">
-            <img 
-              src={product.image} 
-              alt={product.name} 
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </AspectRatio>
-          
-          {/* Location badge - top right corner with diagonal design */}
-          <div className="absolute top-0 right-0">
-            <div className="bg-earth-500 text-white font-bold px-6 py-1 transform rotate-[0deg] translate-x-[15px] translate-y-[15px] shadow-md">
-              {product.price}
+    <div className="animate-on-scroll">
+      <Card className="overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col md:flex-row">
+          {/* Product Image */}
+          <div className="relative w-full md:w-2/5">
+            <AspectRatio ratio={4/3} className="h-full">
+              <img 
+                src={product.image} 
+                alt={product.name} 
+                className="h-full w-full object-cover"
+              />
+            </AspectRatio>
+            
+            {/* Price Tag */}
+            <div className="absolute top-0 left-0">
+              <Badge className="m-3 px-3 py-1.5 bg-earth-500 text-white font-semibold text-sm shadow-md">
+                <Tag className="mr-1 h-3.5 w-3.5" /> {product.price}
+              </Badge>
             </div>
           </div>
           
-          {/* Content overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 flex flex-col justify-end">
-            <h3 className="font-bold text-2xl text-white mb-2">{product.name}</h3>
+          {/* Product Content */}
+          <div className="flex flex-col p-5 md:p-6 w-full md:w-3/5 justify-between">
+            {/* Icon and Title */}
+            <div className="mb-3">
+              <div className="flex items-center mb-2">
+                <div className="p-2 rounded-md bg-nature-50 mr-3">
+                  {product.icon}
+                </div>
+                <h3 className="font-bold text-xl text-gray-800">{product.name}</h3>
+              </div>
+              
+              <p className="text-gray-600 mb-4">{product.description}</p>
+            </div>
             
-            <p className="text-white/90 mb-4 line-clamp-2">{product.description}</p>
-            
-            <div className="grid grid-cols-1 gap-2 mb-6">
+            {/* Features List */}
+            <div className="space-y-2 mb-6">
               {product.features.map((feature, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm text-white/80">
+                <div key={index} className="flex items-center gap-2 text-gray-700">
                   <span className="w-2 h-2 rounded-full bg-nature-500 flex-shrink-0"></span>
-                  <span>{feature}</span>
+                  <span className="text-sm">{feature}</span>
                 </div>
               ))}
             </div>
             
+            {/* Action Button */}
             <a 
               href={getWhatsappLink(product)} 
               target="_blank" 
               rel="noopener noreferrer"
+              className="mt-auto"
             >
               <Button 
-                variant="outline" 
-                className="w-full border-nature-600 text-white hover:bg-nature-600 transition-colors duration-300 rounded-full"
+                className="w-full bg-nature-600 hover:bg-nature-700 text-white transition-all duration-300 group"
               >
-                Cotizar ahora <ArrowRight className="ml-2 h-4 w-4" />
+                Cotizar ahora 
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
             </a>
           </div>
@@ -126,7 +141,7 @@ const Products = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 mx-auto">
+        <div className="grid gap-8 mx-auto">
           {productsData.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
