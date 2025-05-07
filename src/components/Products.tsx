@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Phone, ChartLine, Leaf, Scale, Tag } from 'lucide-react';
@@ -15,7 +14,8 @@ const productsData = [
     description: "Servicios de análisis de datos para aumentar la eficiencia y rentabilidad de su empresa.",
     image: "/lovable-uploads/fb7b2fb0-41bf-4e3e-a48e-494045052acd.png",
     features: ["Toma de decisiones basada en datos", "Visualización de datos", "Informes personalizados"],
-    iconName: "ChartLine"
+    iconName: "ChartLine",
+    boldLink: "https://checkout.bold.co/payment/LNK_WIL80MQCBS"
   },
   {
     id: 2,
@@ -50,11 +50,11 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
   let message = "";
   
   if (product.name === "Análisis de Datos") {
-    message = "Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos%20a%20$100.000%20COP%20la%20hora.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+    message = "Hola,%20estoy%20interesado%20a%20sus%20servicios%20de%20análisis%20de%20datos%20a%20$100.000%20COP%20la%20hora.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
   } else if (product.name.includes("Brachiaria")) {
-    message = "Hola,%20estoy%20interesado%2Fa%20en%20sus%20pastos.%20Específicamente%20en%20" + encodeURIComponent(product.name) + ".%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+    message = "Hola,%20estoy%20interesado%20a%20sus%20pastos.%20Específicamente%20en%20" + encodeURIComponent(product.name) + ".%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
   } else {
-    message = "Hola,%20estoy%20interesado%2Fa%20en%20" + encodeURIComponent(product.name) + ".%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
+    message = "Hola,%20estoy%20interesado%20a%20" + encodeURIComponent(product.name) + ".%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
   }
   
   return `https://wa.me/573026836254?text=${message}`;
@@ -86,8 +86,15 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
       description: product.description,
       image: product.image,
       features: product.features,
-      iconName: product.iconName
+      iconName: product.iconName,
+      boldLink: product.boldLink
     };
+    
+    // If the product has a direct Bold link, navigate there directly
+    if (product.boldLink) {
+      window.open(product.boldLink, '_blank');
+      return;
+    }
     
     navigate('/checkout', { state: { product: serializableProduct } });
   };
@@ -145,7 +152,7 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
                 onClick={handleCheckout}
                 className="bg-nature-600 hover:bg-nature-700 text-white transition-all duration-300 group flex-1"
               >
-                Pagar con Bold
+                {product.id === 1 ? "Ir a Bold" : "Pagar con Bold"}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               
