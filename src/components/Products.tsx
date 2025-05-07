@@ -15,7 +15,7 @@ const productsData = [
     description: "Servicios de análisis de datos para aumentar la eficiencia y rentabilidad de su empresa.",
     image: "/lovable-uploads/fb7b2fb0-41bf-4e3e-a48e-494045052acd.png",
     features: ["Toma de decisiones basada en datos", "Visualización de datos", "Informes personalizados"],
-    icon: <ChartLine className="h-8 w-8 text-nature-600" />
+    iconName: "ChartLine"
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const productsData = [
     description: "Semilla incrustada para zonas húmedas. Resistente a la sequía y suelos pobres.",
     image: "/lovable-uploads/d1b7a494-e5ea-4b34-ad71-70849c067acd.png",
     features: ["Excelente para suelos pobres", "Resistente a sequías", "Alta producción de forraje"],
-    icon: <Leaf className="h-8 w-8 text-nature-600" />
+    iconName: "Leaf"
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const productsData = [
     description: "Semilla incrustada ideal para zonas con precipitaciones moderadas. Excelente para el ganado.",
     image: "/lovable-uploads/afb51770-ae33-4bc9-b163-4a4950946883.png",
     features: ["Incrustada para mayor germinación", "Ideal para ganado bovino", "Alta resistencia"],
-    icon: <Leaf className="h-8 w-8 text-nature-600" />
+    iconName: "Leaf"
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const productsData = [
     description: "Básculas de precisión para el pesaje de ganado en su finca.",
     image: "/lovable-uploads/aea2a7de-ba3d-4483-91da-718db6980336.png",
     features: ["Alta precisión", "Fácil instalación", "Servicio técnico"],
-    icon: <Scale className="h-8 w-8 text-nature-600" />
+    iconName: "Scale"
   }
 ];
 
@@ -60,11 +60,36 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
   return `https://wa.me/573026836254?text=${message}`;
 };
 
+// Helper function to render the appropriate icon
+const renderIcon = (iconName: string) => {
+  switch (iconName) {
+    case "ChartLine":
+      return <ChartLine className="h-8 w-8 text-nature-600" />;
+    case "Leaf":
+      return <Leaf className="h-8 w-8 text-nature-600" />;
+    case "Scale":
+      return <Scale className="h-8 w-8 text-nature-600" />;
+    default:
+      return <ChartLine className="h-8 w-8 text-nature-600" />;
+  }
+};
+
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   const navigate = useNavigate();
   
   const handleCheckout = () => {
-    navigate('/checkout', { state: { product } });
+    // Create a serializable version of the product without React elements
+    const serializableProduct = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      image: product.image,
+      features: product.features,
+      iconName: product.iconName
+    };
+    
+    navigate('/checkout', { state: { product: serializableProduct } });
   };
   
   return (
@@ -95,7 +120,7 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
             <div className="mb-3">
               <div className="flex items-center mb-2">
                 <div className="p-2 rounded-md bg-nature-50 mr-3">
-                  {product.icon}
+                  {renderIcon(product.iconName)}
                 </div>
                 <h3 className="font-bold text-xl text-gray-800">{product.name}</h3>
               </div>
