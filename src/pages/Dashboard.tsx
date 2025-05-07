@@ -109,18 +109,22 @@ const Dashboard = () => {
                 <h3 className="text-lg font-semibold text-nature-600 mb-4">Fundador y Director Ejecutivo</h3>
                 
                 <div className="space-y-3">
-                  <p className="text-gray-700">
-                    Economista graduado de la Pontificia Universidad Javeriana con especialización en 
-                    Inteligencia Artificial aplicada al análisis de datos empresariales.
+                  <p className="text-gray-700 text-justify">
+                    Economista graduado con honores de la Pontificia Universidad Javeriana, especializado en 
+                    Inteligencia Artificial aplicada al análisis avanzado de datos empresariales. Su formación 
+                    combina sólidos fundamentos económicos con conocimientos técnicos de vanguardia.
                   </p>
-                  <p className="text-gray-700">
-                    Pionero en tecnologías de análisis de datos y machine learning, 
-                    especialmente enfocado en el sector de la ganadería en Colombia y América Latina.
+                  <p className="text-gray-700 text-justify">
+                    Reconocido como pionero en la implementación de tecnologías de análisis predictivo y machine learning, 
+                    ha desarrollado sistemas innovadores específicamente adaptados al sector ganadero y agroindustrial 
+                    en Colombia y América Latina. Su enfoque integra metodologías científicas con aplicaciones prácticas.
                   </p>
-                  <p className="text-gray-700">
-                    Su visión de democratizar el acceso a herramientas avanzadas de análisis de datos 
-                    lo llevó a fundar SUBADATOS, combinando su conocimiento en economía con las 
-                    últimas tecnologías en IA.
+                  <p className="text-gray-700 text-justify">
+                    Su visión estratégica de democratizar el acceso a herramientas avanzadas de análisis de datos 
+                    lo impulsó a fundar SUBADATOS, organización que ha transformado la toma de decisiones en el sector rural 
+                    mediante la aplicación de inteligencia artificial y análisis predictivo. Bajo su liderazgo, 
+                    la empresa ha establecido nuevos estándares de excelencia en la analítica de datos para el desarrollo 
+                    sostenible del sector agropecuario.
                   </p>
                 </div>
 
