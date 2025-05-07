@@ -5,6 +5,7 @@ import { ArrowRight, Phone, ChartLine, Leaf, Scale, Tag } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useNavigate } from 'react-router-dom';
 
 const productsData = [
   {
@@ -60,6 +61,12 @@ const getWhatsappLink = (product: typeof productsData[0]) => {
 };
 
 const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
+  const navigate = useNavigate();
+  
+  const handleCheckout = () => {
+    navigate('/checkout', { state: { product } });
+  };
+  
   return (
     <div className="animate-on-scroll">
       <Card className="overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300">
@@ -106,20 +113,33 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
               ))}
             </div>
             
-            {/* Action Button */}
-            <a 
-              href={getWhatsappLink(product)} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="mt-auto"
-            >
+            {/* Action Buttons */}
+            <div className="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-2">
+              {/* Bold Payment Button */}
               <Button 
-                className="w-full bg-nature-600 hover:bg-nature-700 text-white transition-all duration-300 group"
+                onClick={handleCheckout}
+                className="bg-nature-600 hover:bg-nature-700 text-white transition-all duration-300 group flex-1"
               >
-                Cotizar ahora 
+                Pagar con Bold
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
-            </a>
+              
+              {/* WhatsApp Button */}
+              <a 
+                href={getWhatsappLink(product)} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex-1"
+              >
+                <Button 
+                  variant="outline"
+                  className="w-full border-nature-600 text-nature-600 hover:bg-nature-50"
+                >
+                  <Phone className="mr-2 h-4 w-4" />
+                  Consultar
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </Card>
@@ -129,7 +149,8 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
 
 const Products = () => {
   const dataServicesWhatsapp = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos%20a%20$100.000%20COP%20la%20hora.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
-
+  const navigate = useNavigate();
+  
   return (
     <section id="productos" className="section-padding bg-gray-50">
       <div className="container-custom">
@@ -147,7 +168,7 @@ const Products = () => {
           ))}
         </div>
         
-        <div className="mt-16 text-center animate-on-scroll">
+        <div className="mt-16 text-center animate-on-scroll flex flex-col md:flex-row items-center justify-center gap-4">
           <a 
             href={dataServicesWhatsapp} 
             target="_blank" 
@@ -157,9 +178,18 @@ const Products = () => {
             <Button 
               className="bg-earth-600 hover:bg-earth-700 text-white py-6 px-8 rounded-full"
             >
-              <Phone className="mr-2 h-5 w-5" /> Consultar por WhatsApp
+              <Phone className="mr-2 h-5 w-5" />
+              Consultar por WhatsApp
             </Button>
           </a>
+          
+          <Button 
+            onClick={() => navigate('/bold-settings')}
+            variant="outline"
+            className="rounded-full py-6 px-8 border-nature-600 text-nature-600 hover:bg-nature-50"
+          >
+            Configurar Bold
+          </Button>
         </div>
       </div>
     </section>
