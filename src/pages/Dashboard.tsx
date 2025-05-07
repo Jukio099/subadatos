@@ -1,8 +1,11 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Calendar } from 'lucide-react';
 
 const Dashboard = () => {
   useEffect(() => {
@@ -39,14 +42,25 @@ const Dashboard = () => {
           <TabsContent value="founder" className="border rounded-lg bg-white shadow-md p-6">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
-                <Avatar className="h-48 w-48 border-4 border-nature-500">
-                  <AvatarImage 
-                    src="/lovable-uploads/8af72ab5-daeb-4500-92dc-a960ba32cb9f.png" 
-                    alt="Julio César Rodríguez" 
-                    className="object-cover"
-                  />
-                  <AvatarFallback className="text-4xl">JCR</AvatarFallback>
-                </Avatar>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Avatar className="h-48 w-48 border-4 border-nature-500 cursor-pointer hover:opacity-90 transition-opacity">
+                      <AvatarImage 
+                        src="/lovable-uploads/8af72ab5-daeb-4500-92dc-a960ba32cb9f.png" 
+                        alt="Julio César Rodríguez" 
+                        className="object-cover"
+                      />
+                      <AvatarFallback className="text-4xl">JCR</AvatarFallback>
+                    </Avatar>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl">
+                    <img
+                      src="/lovable-uploads/8af72ab5-daeb-4500-92dc-a960ba32cb9f.png"
+                      alt="Julio César Rodríguez"
+                      className="w-full rounded-lg"
+                    />
+                  </DialogContent>
+                </Dialog>
               </div>
               
               <div className="flex-grow text-center md:text-left">
@@ -59,9 +73,8 @@ const Dashboard = () => {
                     Inteligencia Artificial aplicada al análisis de datos empresariales.
                   </p>
                   <p className="text-gray-700">
-                    Con más de 8 años de experiencia en análisis económico y estadístico, Julio César 
-                    ha liderado proyectos de transformación digital para importantes empresas 
-                    en Colombia y América Latina.
+                    Pionero en tecnologías de análisis de datos y machine learning, 
+                    especialmente enfocado en el sector de la ganadería en Colombia y América Latina.
                   </p>
                   <p className="text-gray-700">
                     Su visión de democratizar el acceso a herramientas avanzadas de análisis de datos 
@@ -78,11 +91,22 @@ const Dashboard = () => {
                     Inteligencia Artificial
                   </span>
                   <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                    Análisis de Datos
+                    Machine Learning
                   </span>
                   <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                    Consultoría Empresarial
+                    Análisis de Datos
                   </span>
+                </div>
+                
+                <div className="mt-6">
+                  <a 
+                    href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1jukDDZEzrnmkKKAnSxB3Bn8iggOflE6zOEaj7FJ8bGhM2EBcj8XiPfO9xy3EEyIvELBJXORZZ?gv=true" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center bg-nature-600 hover:bg-nature-700 text-white px-4 py-2 rounded-md transition-colors"
+                  >
+                    <Calendar className="mr-2 h-5 w-5" /> Agendar una consulta
+                  </a>
                 </div>
               </div>
             </div>
