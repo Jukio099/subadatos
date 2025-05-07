@@ -78,25 +78,15 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
   const navigate = useNavigate();
   
   const handleCheckout = () => {
-    // Create a serializable version of the product without React elements
-    const serializableProduct = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      description: product.description,
-      image: product.image,
-      features: product.features,
-      iconName: product.iconName,
-      boldLink: product.boldLink
-    };
-    
-    // If the product has a direct Bold link, navigate there directly
-    if (product.boldLink) {
+    // Data analysis product uses direct Bold link
+    if (product.id === 1) {
       window.open(product.boldLink, '_blank');
       return;
     }
     
-    navigate('/checkout', { state: { product: serializableProduct } });
+    // For other products, just show WhatsApp message (don't use Bold checkout)
+    const whatsappLink = getWhatsappLink(product);
+    window.open(whatsappLink, '_blank');
   };
   
   return (
@@ -147,12 +137,12 @@ const ProductCard = ({ product }: { product: typeof productsData[0] }) => {
             
             {/* Action Buttons */}
             <div className="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-2">
-              {/* Bold Payment Button */}
+              {/* Payment Button */}
               <Button 
                 onClick={handleCheckout}
                 className="bg-nature-600 hover:bg-nature-700 text-white transition-all duration-300 group flex-1"
               >
-                {product.id === 1 ? "Ir a Bold" : "Pagar con Bold"}
+                {product.id === 1 ? "Ir a Bold" : "Contactar por WhatsApp"}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               
