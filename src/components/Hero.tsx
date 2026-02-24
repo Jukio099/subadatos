@@ -1,8 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Phone, Database, BarChart3 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ChevronDown, Phone } from 'lucide-react';
 
 const Hero = () => {
   const whatsappLink = "https://wa.me/573026836254?text=Hola,%20estoy%20interesado%2Fa%20en%20sus%20servicios%20de%20análisis%20de%20datos.%20%C2%BFMe%20podr%C3%ADan%20dar%20m%C3%A1s%20informaci%C3%B3n%3F";
@@ -72,13 +71,6 @@ const Hero = () => {
                 <Phone className="mr-2 h-5 w-5" /> Contactar por WhatsApp
               </Button>
             </a>
-            <Link to="/dashboard">
-              <Button 
-                className="bg-secondary hover:bg-secondary/90 text-white text-lg py-6 px-8"
-              >
-                <BarChart3 className="mr-2 h-5 w-5" /> Ver Dashboard Interactivo
-              </Button>
-            </Link>
             <Button 
               variant="outline" 
               className="bg-transparent border-white text-white hover:bg-white/10 text-lg py-6 px-8"

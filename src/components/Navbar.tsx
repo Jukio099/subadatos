@@ -61,7 +61,7 @@ const Navbar = () => {
             </div>
             <Badge 
               variant="default" 
-              className="ml-1 bg-secondary text-white absolute -top-3 -right-8 animate-pulse"
+              className="ml-1 bg-secondary text-white absolute -top-3 -right-8"
             >
               Nuevo
             </Badge>
@@ -125,7 +125,7 @@ const Navbar = () => {
                 <BarChart3 className="h-4 w-4 mr-1" />
                 <span>Dashboard</span>
               </div>
-              <Badge className="bg-secondary text-white">Nuevo</Badge>
+              <Badge className="bg-secondary text-white text-xs">Nuevo</Badge>
             </Link>
             <button 
               onClick={() => scrollToSection('inicio')}
