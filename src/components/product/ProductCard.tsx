@@ -32,14 +32,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <Card className="overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300">
         <div className="flex flex-col md:flex-row">
           {/* Product Image */}
-          <div className="relative w-full md:w-2/5">
-            <AspectRatio ratio={4/3} className="h-full">
-              <img 
-                src={product.image} 
-                alt={product.name} 
-                className="h-full w-full object-cover"
-              />
-            </AspectRatio>
+          <div className="relative w-full md:w-2/5 min-h-[200px] md:min-h-0">
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className="absolute inset-0 h-full w-full object-cover"
+            />
             
             {/* Price Tag */}
             <div className="absolute top-0 left-0">

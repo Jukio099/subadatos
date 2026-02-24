@@ -42,7 +42,7 @@ const Index = () => {
       <Benefits />
       <Contact />
       <Footer />
-      <DashboardButton />
+      
       <Toaster />
       
       {/* Back to top button */}
